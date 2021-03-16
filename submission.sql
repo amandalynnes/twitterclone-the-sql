@@ -1,12 +1,20 @@
 -- Query to create a table for twitterusers
 
-CREATE TABLE twitteruser(id SERIAL NOT NULL PRIMARY KEY, username VARCHAR(40) NOT NULL,
-password VARCHAR(40)NOT NULL,display_name VARCHAR(40) NOT NULL);
+CREATE TABLE twitteruser(
+    id SERIAL NOT NULL PRIMARY KEY,
+    username VARCHAR(40) NOT NULL,
+    password VARCHAR(40)NOT NULL,
+    display_name VARCHAR(40) NOT NULL
+);
 
 
 -- Query to create a table for tweets
 
-
+CREATE TABLE tweet(
+    id SERIAL NOT NULL PRIMARY KEY,
+    fk_twitteruser INT NOT NULL,
+    body VARCHAR(140),
+    created_at DATE);
 
 -- Query to create a table for notifications
 

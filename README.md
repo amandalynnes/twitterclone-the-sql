@@ -1,3 +1,9 @@
+<!-- 
+References:
+https://www.postgresql.org/docs/8.3/ddl-constraints.html#DDL-CONSTRAINTS-FK
+ -->
+
+
 Though we can only hope that your time with SQL will be limited, it's important to understand and be familiar with some of the grittier details of writing SQL queries.
 
 #### **Your Task**

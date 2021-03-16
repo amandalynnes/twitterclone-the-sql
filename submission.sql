@@ -14,11 +14,16 @@ CREATE TABLE tweet(
     id SERIAL NOT NULL PRIMARY KEY,
     fk_twitteruser INT NOT NULL,
     body VARCHAR(140),
-    created_at DATE);
+    created_at DATE
+);
 
 -- Query to create a table for notifications
 
-
+CREATE TABLE notification(
+    id SERIAL NOT NULL PRIMARY KEY,
+    fk_twitteruser INT NOT NULL,
+    fk_tweet INT NOT NULL
+);
 
 -- Query to create a new user (username: steve, password: hunter2, display name: steve-o)
 

@@ -152,7 +152,7 @@ WHERE fk_twitteruser= (
 
 -- Extra Credit, 1pt: Query to delete a tweet starting when you already know the ID (use 1)
 
-
+DELETE FROM tweet WHERE id=1;
 
 -- Extra Credit: 2pts: Single query to delete all the tweets belonging to username bob
 

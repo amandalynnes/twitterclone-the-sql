@@ -26,7 +26,8 @@ CREATE TABLE notification(
 
 -- Query to create a new user (username: steve, password: hunter2, display name: steve-o)
 
-
+INSERT INTO twitteruser (username, password, display_name)
+VALUES ('steve', 'hunter2', 'steve-o');
 
 /* Query to create two new users at once: 
  -username: dave, password: asdf, display name: davey

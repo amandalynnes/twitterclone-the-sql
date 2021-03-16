@@ -62,7 +62,18 @@ WHERE
 
 -- Query to create a new tweet written by the user with the username steve (yes, you have to get the ID of Steve first -- hint: subqueries are your friend)
 
-
+INSERT INTO
+    tweet (fk_twitteruser, body, created_at)
+VALUES (
+    (SELECT
+            id
+    FROM
+        twitteruser
+    WHERE
+        username='steve'),
+    'Hi, I"m Steve',
+    NOW()
+);
 
 -- Query to get the count of tweets by username steve (hint: subqueries are your friend)
 

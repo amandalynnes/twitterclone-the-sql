@@ -53,7 +53,12 @@ WHERE
 
 -- Query to get the ID of a user by the username of dave
 
-
+SELECT 
+    id 
+FROM 
+    twitteruser
+WHERE 
+    username='dave';
 
 -- Query to create a new tweet written by the user with the username steve (yes, you have to get the ID of Steve first -- hint: subqueries are your friend)
 

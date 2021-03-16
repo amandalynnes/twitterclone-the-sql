@@ -71,7 +71,7 @@ VALUES (
         twitteruser
     WHERE
         username='steve'),
-    'Hi, I"m Steve',
+    'Hey, @bob',
     NOW()
 );
 
@@ -172,3 +172,7 @@ WHERE fk_twitteruser= (
     username of the person who wrote the tweet that triggered the notification
     text of the tweet
     ...where the only piece of information you start with is the display name of Steve; "steve-o" */
+
+
+    
+    

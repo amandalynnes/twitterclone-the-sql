@@ -3,6 +3,10 @@ References:
 https://www.postgresql.org/docs/8.3/ddl-constraints.html#DDL-CONSTRAINTS-FK
 
 https://www.postgresqltutorial.com/postgresql-insert-multiple-rows/
+
+https://www.w3schools.com/sql/sql_select.asp
+
+https://www.w3schools.com/sql/sql_where.asp
  -->
 
 

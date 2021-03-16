@@ -43,6 +43,12 @@ VALUES
  
 -- Query to get the username and password of twitteruser ID 1
 
+SELECT 
+    username, password 
+FROM 
+    twitteruser
+WHERE 
+    id=1;
 
 
 -- Query to get the ID of a user by the username of dave

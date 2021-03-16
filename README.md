@@ -1,6 +1,8 @@
 <!-- 
 References:
 https://www.postgresql.org/docs/8.3/ddl-constraints.html#DDL-CONSTRAINTS-FK
+
+https://www.postgresqltutorial.com/postgresql-insert-multiple-rows/
  -->
 
 

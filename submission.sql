@@ -77,7 +77,15 @@ VALUES (
 
 -- Query to get the count of tweets by username steve (hint: subqueries are your friend)
 
-
+SELECT COUNT(id)
+FROM tweet
+WHERE fk_twitteruser= (
+    SELECT
+            id
+    FROM
+        twitteruser
+    WHERE
+        username='steve');
 
 -- Query to get the date and text of all tweets by username steve (hint: subqueries are your friend)
 

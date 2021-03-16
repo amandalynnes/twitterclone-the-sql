@@ -101,7 +101,15 @@ WHERE fk_twitteruser= (
 
 -- Query to get the username and password of the username bob
 
-
+SELECT username, password
+FROM twitteruser
+WHERE id= (
+    SELECT
+            id
+    FROM
+        twitteruser
+    WHERE
+        username='bob');
 
 -- Query to create a notification for username bob using the tweet written by username steve (hint: subqueries are your friend)
 

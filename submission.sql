@@ -89,7 +89,15 @@ WHERE fk_twitteruser= (
 
 -- Query to get the date and text of all tweets by username steve (hint: subqueries are your friend)
 
-
+SELECT created_at, body
+FROM tweet
+WHERE fk_twitteruser= (
+    SELECT
+            id
+    FROM
+        twitteruser
+    WHERE
+        username='steve');
 
 -- Query to get the username and password of the username bob
 

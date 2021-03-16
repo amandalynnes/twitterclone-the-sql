@@ -138,6 +138,15 @@ VALUES (
 
 -- Query to get all IDs of notifications for bob (hint: subqueries are your friend)
 
+SELECT id
+FROM notification
+WHERE fk_twitteruser= (
+    SELECT
+            id
+    FROM
+        twitteruser
+    WHERE
+        username='bob');
 
 -- EC: 
 

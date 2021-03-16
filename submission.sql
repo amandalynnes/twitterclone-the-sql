@@ -113,7 +113,28 @@ WHERE id= (
 
 -- Query to create a notification for username bob using the tweet written by username steve (hint: subqueries are your friend)
 
-
+INSERT INTO 
+    notification (fk_twitteruser, fk_tweet)
+VALUES (
+    (SELECT
+            id
+    FROM
+        twitteruser
+    WHERE
+        username='bob'),
+    (SELECT
+            id
+    FROM
+        tweet
+    WHERE
+        fk_twitteruser=  (
+            SELECT
+                    id
+            FROM
+                twitteruser
+            WHERE
+                username='steve'))
+);
 
 -- Query to get all IDs of notifications for bob (hint: subqueries are your friend)
 

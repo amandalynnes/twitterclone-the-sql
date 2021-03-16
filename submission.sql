@@ -1,5 +1,7 @@
 -- Query to create a table for twitterusers
 
+CREATE TABLE twitteruser(id SERIAL NOT NULL PRIMARY KEY, username VARCHAR(40) NOT NULL,
+password VARCHAR(40)NOT NULL,display_name VARCHAR(40) NOT NULL);
 
 
 -- Query to create a table for tweets

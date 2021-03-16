@@ -156,6 +156,15 @@ DELETE FROM tweet WHERE id=1;
 
 -- Extra Credit: 2pts: Single query to delete all the tweets belonging to username bob
 
+DELETE
+FROM tweet 
+WHERE fk_twitteruser= (
+    SELECT
+            id
+    FROM
+        twitteruser
+    WHERE
+        username='bob');
 
 
 /* Extra Credit: 5pts: Single query to output:

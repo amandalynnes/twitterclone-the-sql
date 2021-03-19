@@ -2,49 +2,51 @@
 # https://docs.python.org/3/library/sqlite3.html (Links to an external site.)
 
 import sqlite3
-con = sqlite3.connect('example.db')
+import datetime
+import mimesis
+import random
+conn = sqlite3.connect('example.db')
 
 # Use IF NOT EXISTS to see if your three twitterclone tables are there
 # if not, create them
 # There is a slight difference in table creation when using sqlite versus postgresql
 # https://sqlite.org/autoinc.html (Links to an external site.)
 
-cur = con.cursor()
+c = conn.cursor()
 
-cur.execute('''CREATE TABLE[IF NOT EXISTS] twitteruser(
-        id int, username text, password text, display_name text)''')
-cur.execute('''INSERT INTO twitteruser VALUES (
-        ('steve', 'hunter2', 'steve-o'),
-        ('dave', 'asdf', 'davey'),
-        ('bob', 'qwer', 'bobbinator'))''')
-con.commit()
-con.close()
+c.execute('''CREATE TABLE IF NOT EXISTS twitteruser(
+        username VARCHAR(40) NOT NULL, password VARCHAR(40) NOT NULL, display_name VARCHAR(40) NOT NULL)''')
+
+for i in range(500):
+        c.execute(f"INSERT INTO twitteruser VALUES ('{mimesis.Person.username}', '{mimesis.Person.password}', '{mimesis.Person.first_name}')")
 
 
-cur.execute('''CREATE TABLE[IF NOT EXISTS] tweet(
-        id int, fk_twitteruser int, body text, created_at int''')
-cur.execute('''INSERT INTO tweet VALUES (
-        (SELECT id FROM twitteruser WHERE username='steve'),
-        'Hey, @bob', NOW())''')
-con.commit()
-con.close()
+c.execute('''CREATE TABLE IF NOT EXISTS tweet(
+        fk_twitteruser INT NOT NULL, body VARCHAR(140), created_at TIMESTAMP) ''')
+
+for i in range(1000):
+    c.execute(f"INSERT INTO tweet VALUES('{random.randint(0, 1000)}', '{mimesis.Text.text}', '{mimesis.Datetime.datetime}')")
 
 
-cur.execute('''CREATE TABLE[IF NOT EXISTS] notification(
-        id int, fk_twitteruser int, fk_tweet int''')
-cur.execute('''INSERT INTO notification VALUES (
-        (SELECT id FROM twitteruser WHERE username='bob'),
-        (SELECT id FROM tweet WHERE fk_twitteruser= (
-            SELECT id FROM twitteruser WHERE username='steve'))''')
-con.commit()
-con.close()
+c.execute('''CREATE TABLE IF NOT EXISTS notification(
+        fk_twitteruser INT, fk_tweet INT)''')
+# c.execute('''INSERT INTO notification VALUES (
+#         (SELECT rowid FROM twitteruser WHERE username='bob'),
+#         (SELECT rowid FROM tweet WHERE fk_twitteruser= (
+#             SELECT rowid FROM twitteruser WHERE username='steve'))''')
 
 
-# Use the Mimesis (Links to an external site.) package for Python to generate 500 new user accounts and insert them into your database (hint: mimesis supports passwords, usernames, and full names)
+for i in range(200):
+    person_1 = {random.randint(0,1000)}
+    person_2 = {random.randint(0,1000)}
 
+    user_1 = c.execute(f'SELECT rowid FROM twitteruser WHERE rowid="{person_1}"')
+    tweet = c.execute(f'SELECT rowid FROM tweet WHERE fk_twitteruser="{person_2}"')
+    c.execute(f"INSERT INTO notification VALUES('{user_1}', '{tweet}')")
+    
 
-
-# Randomly select users and use the mimesis.Text.text() to create 1000 tweets and insert them into your database
+conn.commit()
+conn.close()
 
 
 

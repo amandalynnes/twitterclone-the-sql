@@ -9,26 +9,36 @@ con = sqlite3.connect('example.db')
 # There is a slight difference in table creation when using sqlite versus postgresql
 # https://sqlite.org/autoinc.html (Links to an external site.)
 
+cur = con.cursor()
 
-CREATE TABLE [IF NOT EXISTS] twitteruser(
-        id SERIAL NOT NULL PRIMARY KEY,
-        username VARCHAR(40) NOT NULL,
-        password VARCHAR(40)NOT NULL,
-        display_name VARCHAR(40) NOT NULL
-) [WITHOUT ROWID];
+cur.execute('''CREATE TABLE[IF NOT EXISTS] twitteruser(
+        id real, username text, password text, display_name text)''')
+cur.execute('''INSERT INTO twitteruser VALUES (
+        ('steve', 'hunter2', 'steve-o'),
+        ('dave', 'asdf', 'davey'),
+        ('bob', 'qwer', 'bobbinator'))''')
+con.commit()
+con.close()
 
-CREATE TABLE [IF NOT EXISTS] tweet(
-        id SERIAL NOT NULL PRIMARY KEY,
-        fk_twitteruser INT NOT NULL,
-        body VARCHAR(140),
-        created_at TIMESTAMP
-) [WITHOUT ROWID];
 
-CREATE TABLE [IF NOT EXISTS] notification(
-        id SERIAL NOT NULL PRIMARY KEY,
-        fk_twitteruser INT NOT NULL,
-        fk_tweet INT NOT NULL
-) [WITHOUT ROWID];
+cur.execute('''CREATE TABLE[IF NOT EXISTS] tweet(
+        id real, fk_twitteruser real, body text, created_at real''')
+cur.execute('''INSERT INTO tweet VALUES (
+        (SELECT id FROM twitteruser WHERE username='steve'),
+        'Hey, @bob', NOW())''')
+con.commit()
+con.close()
+
+
+cur.execute('''CREATE TABLE[IF NOT EXISTS] notification(
+        id real, fk_twitteruser real, fk_tweet real''')
+cur.execute('''INSERT INTO notification VALUES (
+        (SELECT id FROM twitteruser WHERE username='bob'),
+        (SELECT id FROM tweet WHERE fk_twitteruser= (
+            SELECT id FROM twitteruser WHERE username='steve'))''')
+con.commit()
+con.close()
+
 
 # Use the Mimesis (Links to an external site.) package for Python to generate 500 new user accounts and insert them into your database (hint: mimesis supports passwords, usernames, and full names)
 

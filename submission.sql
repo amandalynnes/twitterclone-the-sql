@@ -197,4 +197,10 @@ WHERE
     username='steve';
 
 -- Query to use the ORDER BY attribute to sort the content of the tweets table by newest tweets first (sort on the created_at field)
-    
+
+SELECT
+    *
+FROM
+    tweet
+ORDER BY
+    created_at DESC;

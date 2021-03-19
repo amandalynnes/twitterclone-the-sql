@@ -174,5 +174,21 @@ WHERE fk_twitteruser= (
     ...where the only piece of information you start with is the display name of Steve; "steve-o" */
 
 
-    
+
+-- TwitterClone: The SQL, PART DEUX
+
+
+-- Query to update Steve's display name to "steviethewonderdude"
+
+UPDATE
+    twitteruser 
+SET 
+    display_name='steviethewonderdude'
+WHERE
+    username='steve';
+
+-- Single query to update Dave's display name to "DMG" and his password to "iamthedmg"
+
+
+-- Query to use the ORDER BY attribute to sort the content of the tweets table by newest tweets first (sort on the created_at field)
     

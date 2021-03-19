@@ -7,6 +7,13 @@ https://www.postgresqltutorial.com/postgresql-insert-multiple-rows/
 https://www.w3schools.com/sql/sql_select.asp
 
 https://www.w3schools.com/sql/sql_where.asp
+
+https://www.w3schools.com/sql/sql_orderby.asp
+
+https://docs.python.org/3/library/sqlite3.html
+
+https://sqlite.org/autoinc.html
+
  -->
 
 

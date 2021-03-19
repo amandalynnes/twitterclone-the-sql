@@ -12,7 +12,7 @@ con = sqlite3.connect('example.db')
 cur = con.cursor()
 
 cur.execute('''CREATE TABLE[IF NOT EXISTS] twitteruser(
-        id real, username text, password text, display_name text)''')
+        id int, username text, password text, display_name text)''')
 cur.execute('''INSERT INTO twitteruser VALUES (
         ('steve', 'hunter2', 'steve-o'),
         ('dave', 'asdf', 'davey'),
@@ -22,7 +22,7 @@ con.close()
 
 
 cur.execute('''CREATE TABLE[IF NOT EXISTS] tweet(
-        id real, fk_twitteruser real, body text, created_at real''')
+        id int, fk_twitteruser int, body text, created_at int''')
 cur.execute('''INSERT INTO tweet VALUES (
         (SELECT id FROM twitteruser WHERE username='steve'),
         'Hey, @bob', NOW())''')
@@ -31,7 +31,7 @@ con.close()
 
 
 cur.execute('''CREATE TABLE[IF NOT EXISTS] notification(
-        id real, fk_twitteruser real, fk_tweet real''')
+        id int, fk_twitteruser int, fk_tweet int''')
 cur.execute('''INSERT INTO notification VALUES (
         (SELECT id FROM twitteruser WHERE username='bob'),
         (SELECT id FROM tweet WHERE fk_twitteruser= (

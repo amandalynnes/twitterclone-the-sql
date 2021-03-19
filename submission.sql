@@ -189,6 +189,12 @@ WHERE
 
 -- Single query to update Dave's display name to "DMG" and his password to "iamthedmg"
 
+UPDATE
+    twitteruser 
+SET 
+    display_name='DMG', password='iamthedmg'
+WHERE
+    username='steve';
 
 -- Query to use the ORDER BY attribute to sort the content of the tweets table by newest tweets first (sort on the created_at field)
     

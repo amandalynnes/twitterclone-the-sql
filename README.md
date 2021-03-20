@@ -16,7 +16,11 @@ https://sqlite.org/autoinc.html
 
 https://docs.python.org/3/library/sqlite3.html
 
+https://mimesis.name/api.html#person
+
 Mike Hrtley's post
+
+Jonny Sueck, Cesar Ramos
 
  -->
 

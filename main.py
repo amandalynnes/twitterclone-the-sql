@@ -6,9 +6,8 @@ import datetime
 # import mimesis
 from mimesis import Person, Text, Datetime
 import random
-from random import randint
 conn = sqlite3.connect('example.db')
-
+from random import randint
 person = Person()
 text = Text()
 date = Datetime()
@@ -19,7 +18,6 @@ date = Datetime()
 # https://sqlite.org/autoinc.html (Links to an external site.)
 
 c = conn.cursor()
-
 
 c.execute("""CREATE TABLE IF NOT EXISTS twitteruser(
         username TEXT NOT NULL, password TEXT NOT NULL, display_name TEXT NOT NULL)""")
@@ -33,24 +31,19 @@ c.execute("""CREATE TABLE IF NOT EXISTS tweet(
 c.execute("""CREATE TABLE IF NOT EXISTS notification(
         fk_twitteruser INTEGER, fk_tweet INTEGER)""")
 
-c.execute("""INSERT INTO twitteruser VALUES('bob', 'bob', 'bob')""")
+c.execute(f"""INSERT INTO tweet VALUES("{random.choice(range(0, 500))}", "{text.text()}", "{date.datetime()}" )""")
 
-for i in range(10):
+c.execute("""INSERT INTO notification VALUES('1', '1' )""")
 
-    c.execute(f"""INSERT INTO tweet VALUES("1", "{text.text()}", "{date.formatted_date()}" )""")
-
-# c.execute(f"""INSERT INTO notification VALUES('1', '1' )""")
-
-
-# for i in range(500):
-#         c.execute(f"""INSERT INTO twitteruser VALUES ("{person.username()}", "{person.password(hashed=True)}", "{person.first_name()}")""")
+for i in range(500):
+    c.execute(f"""INSERT INTO twitteruser VALUES ("{person.username()}", "{person.password(hashed=True)}", "{person.first_name()}")""")
 
 # c.execute(f"""SELECT rowid FROM twitteruser""")
 # users = c.fetchall()
 # for i in range(1000):
 #     user = random.choice(users)
-# #     print(user[0])
-#     c.execute(f"""INSERT INTO tweet VALUES ("{user[0]}", "{text.text()}", "{datetime.now}")""")
+#     print(user[0], 'user')
+#     c.execute(f"""INSERT INTO tweet VALUES ({random.choice(range(0, 500))}, "{text.text()}", "{date.datetime()}")""")
 
 
 # for i in range(200):
@@ -64,6 +57,3 @@ for i in range(10):
 conn.commit()
 conn.close()
 
-
-
-# randomly select two users that are not the same, grab a tweet by one of them from the database, and generate 200 notifications and insert them into your database

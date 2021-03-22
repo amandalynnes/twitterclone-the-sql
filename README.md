@@ -18,6 +18,8 @@ https://docs.python.org/3/library/sqlite3.html
 
 https://mimesis.name/api.html#person
 
+https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.execute
+
 Mike Hrtley's post
 
 Jonny Sueck, Cesar Ramos, Peter Marsh

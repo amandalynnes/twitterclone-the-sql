@@ -20,7 +20,7 @@ https://mimesis.name/api.html#person
 
 Mike Hrtley's post
 
-Jonny Sueck, Cesar Ramos
+Jonny Sueck, Cesar Ramos, Peter Marsh
 
  -->
 

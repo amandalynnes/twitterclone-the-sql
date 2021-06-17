@@ -172,7 +172,22 @@ WHERE fk_twitteruser= (
     username of the person who wrote the tweet that triggered the notification
     text of the tweet
     ...where the only piece of information you start with is the display name of Steve; "steve-o" */
-
+SELECT
+    notification.user_mentioned,
+    notification.sent_from,
+    tweet.message
+FROM
+    notification, tweet
+WHERE
+    user_mentioned=(
+        SELECT
+            username
+        FROM
+            twitteruser
+        WHERE
+            display_name='steve-o'
+    )
+;
 
     
     
